@@ -1,6 +1,7 @@
 spring:
-  datasource:
-    generate-unique-name: false
+  profiles:
+    active:
+    - dev
   h2:
     console:
       enabled: true
@@ -16,3 +17,34 @@ spring:
       pageable:
         default-page-size: 10
         max-page-size: 100
+---
+spring:
+  h2:
+    console:
+      enabled: false
+  config:
+    activate:
+      on-profile: prod
+  datasource:
+    url: jdbc:h2:./troke-prod
+  jpa:
+    hibernate:
+      ddl-auto: update
+troke:
+  upload-path: uploads-prod
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+  datasource:
+    url: jdbc:h2:mem:troke-dev
+troke:
+  upload-path: uploads-dev
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+troke:
+  upload-path: uploads-test
