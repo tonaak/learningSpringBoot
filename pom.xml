@@ -9,10 +9,10 @@
 		<version>2.6.7</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.hoaxify</groupId>
-	<artifactId>hoaxify</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>hoaxify</name>
+	<groupId>com.troke</groupId>
+	<artifactId>troke</artifactId>
+	<version>1.0</version>
+	<name>troke</name>
 	<description>Social Sharing Platform</description>
 	<properties>
 		<java.version>1.8</java.version>
