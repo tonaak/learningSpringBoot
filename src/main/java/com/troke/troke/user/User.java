@@ -33,7 +33,7 @@ public class User implements UserDetails {
 	@GeneratedValue
 	private long id;
 
-	@NotNull(message = "{hoaxify.constraints.username.NotNull.message}")
+	@NotNull(message = "{troke.constraints.username.NotNull.message}")
 	@Size(min = 4, max = 255)
 	@UniqueUsername
 	private String username;
@@ -44,7 +44,7 @@ public class User implements UserDetails {
 
 	@NotNull
 	@Size(min = 8, max = 255)
-	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$", message = "{hoaxify.constraints.password.Pattern.message}")
+	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).*$", message = "{troke.constraints.password.Pattern.message}")
 	private String password;
 
 	private String image;

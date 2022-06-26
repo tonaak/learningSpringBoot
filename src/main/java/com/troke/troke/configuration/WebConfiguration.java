@@ -39,4 +39,5 @@ public class WebConfiguration implements WebMvcConfigurer {
 			folder.mkdir();
 		}
 	}
+
 }

@@ -13,7 +13,7 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface UniqueUsername {
 
-	String message() default "{hoaxify.constraints.username.UniqueUsername.message}";
+	String message() default "{troke.constraints.username.UniqueUsername.message}";
 
 	Class<?>[] groups() default {};
 
