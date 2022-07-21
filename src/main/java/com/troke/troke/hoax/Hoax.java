@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.troke.troke.file.FileAttachment;
+import com.troke.troke.shared.FileAttachmentForHoax;
 import com.troke.troke.user.User;
 
 import lombok.Data;
@@ -38,5 +39,6 @@ public class Hoax {
 	private User user;
 
 	@OneToOne(mappedBy = "hoax", orphanRemoval = true)
+	@FileAttachmentForHoax
 	private FileAttachment attachment;
 }
