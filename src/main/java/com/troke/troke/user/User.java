@@ -32,6 +32,11 @@ public class User implements UserDetails {
 	@Id
 	@GeneratedValue
 	private long id;
+	
+	@NotNull(message = "{troke.constraints.email.NotNull.message}")
+	@Size(min = 4, max = 255)
+	@UniqueEmail
+	private String email;
 
 	@NotNull(message = "{troke.constraints.username.NotNull.message}")
 	@Size(min = 4, max = 255)

@@ -203,7 +203,7 @@ public class UserControllerTest {
 	public void postUser_whenUserIsInvalid_receiveApiErrorWithValidationErrors() {
 		User user = new User();
 		ResponseEntity<ApiError> response = postSignup(user, ApiError.class);
-		assertThat(response.getBody().getValidationErrors().size()).isEqualTo(3);
+		assertThat(response.getBody().getValidationErrors().size()).isEqualTo(4);
 	}
 
 	@Test
