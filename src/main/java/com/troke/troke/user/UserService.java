@@ -1,6 +1,7 @@
 package com.troke.troke.user;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -62,4 +63,25 @@ public class UserService {
 		}
 		return userRepository.save(inDB);
 	}
+	
+	public void updateResetPasswordToken(String token, String email) throws NotFoundException {
+        List<User> userList = userRepository.findByEmail(email);
+        if (userList.size() > 0) {
+            User user = userList.get(0);
+        	user.setResetPasswordToken(token);
+            userRepository.save(user);
+        } else {
+            throw new NotFoundException("Could not find any user with the email " + email);
+        }
+    }
+     
+    public User getByResetPasswordToken(String token) {
+        return userRepository.findByResetPasswordToken(token);
+    }
+     
+    public void updatePassword(User user, String newPassword) {
+		user.setPassword(passwordEncoder.encode(newPassword));     
+        user.setResetPasswordToken(null);
+        userRepository.save(user);
+    }
 }

@@ -4,6 +4,7 @@ import java.beans.Transient;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -37,6 +38,9 @@ public class User implements UserDetails {
 	@Size(min = 4, max = 255)
 	@UniqueEmail
 	private String email;
+	
+	@Column(name = "reset_password_token")
+    private String resetPasswordToken;
 
 	@NotNull(message = "{troke.constraints.username.NotNull.message}")
 	@Size(min = 4, max = 255)

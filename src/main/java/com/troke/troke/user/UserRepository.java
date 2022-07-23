@@ -13,4 +13,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 	Page<User> findByUsernameNot(String username, Pageable page);
 
 	List<User> findByEmail(String email);
+	
+	User findByResetPasswordToken(String token);
 }
