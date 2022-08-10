@@ -43,6 +43,10 @@ public class HoaxService {
 		}
 		return hoaxRepository.save(hoax);
 	}
+	
+	public Hoax getById(long id) {
+		return hoaxRepository.getById(id);
+	}
 
 	public Page<Hoax> getAllHoaxes(Pageable pageable) {
 		return hoaxRepository.findAll(pageable);

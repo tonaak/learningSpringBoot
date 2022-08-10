@@ -18,6 +18,7 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.troke.troke.hoax.Hoax;
+import com.troke.troke.hoax.react.HoaxReact;
 
 import lombok.Data;
 
@@ -60,6 +61,9 @@ public class User implements UserDetails {
 
 	@OneToMany(mappedBy = "user")
 	private List<Hoax> hoaxes;
+	
+	@OneToMany(mappedBy = "user")
+	private List<HoaxReact> reacts;
 
 	@Override
 	@Transient
