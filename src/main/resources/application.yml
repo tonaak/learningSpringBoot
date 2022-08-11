@@ -1,9 +1,7 @@
-server:
-  port: 5000
 spring:
   profiles:
     active:
-    - deploy
+    - prod
   h2:
     console:
       enabled: true
@@ -34,39 +32,6 @@ spring:
           auth: true
           starttls:
             enable: true
----
-spring:
-  config:
-    activate:
-      on-profile: deploy
-  datasource:
-    url: jdbc:postgres://awenwwkhgbdaqw:07a9efe854da676524c9de03c7f58c4f36bafb08187cdcbb050649f69719f652@ec2-100-26-39-41.compute-1.amazonaws.com:5432/d1tf4pjs3ianja
-    username: awenwwkhgbdaqw
-    password: 07a9efe854da676524c9de03c7f58c4f36bafb08187cdcbb050649f69719f652
-    driverClassName: org.postgresql.Driver
-  jpa:
-    properties:
-      hibernate:
-        hb2dll:
-          auto: update
-        dialect: org.hibernate.dialect.PostgreSQL9Dialect
-        id:
-          new_generator_mappings: true
-        show:
-          sql: true
-        format_sql: true
-    generate-ddl: true
-logging:
-  level:
-    org:
-      hibernate:
-        SQL: DEBUG
-        type:
-          descriptor:
-            sql:
-              BasicBinder: TRACE
-troke:
-  upload-path: uploads-deploy
 ---
 spring:
   h2:
