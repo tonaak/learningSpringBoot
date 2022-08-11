@@ -23,4 +23,13 @@ public class HoaxSecurityService {
 		}
 		return false;
 	}
+	
+	public boolean isAllowedToEdit(long hoaxId, User loggedInUser) {
+		Optional<Hoax> optionalHoax = hoaxRepository.findById(hoaxId);
+		if (optionalHoax.isPresent()) {
+			Hoax inDB = optionalHoax.get();
+			return inDB.getUser().getId() == loggedInUser.getId();
+		}
+		return false;
+	}
 }

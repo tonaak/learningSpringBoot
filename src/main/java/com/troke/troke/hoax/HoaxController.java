@@ -15,11 +15,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.troke.troke.hoax.vm.HoaxUpdateVM;
 import com.troke.troke.hoax.vm.HoaxVM;
 import com.troke.troke.shared.CurrentUser;
 import com.troke.troke.shared.GenericResponse;
@@ -88,5 +90,12 @@ public class HoaxController {
 	GenericResponse deleteHoax(@PathVariable long id) {
 		hoaxService.deleteHoax(id);
 		return new GenericResponse("Deleted successfully");
+	}
+	
+	@PutMapping("/hoaxes/{id:[0-9]+}")
+	@PreAuthorize("@hoaxSecurityService.isAllowedToEdit(#id, principal)")
+	HoaxVM updateUser(@PathVariable long id, @Valid @RequestBody(required = false) HoaxUpdateVM hoaxUpdate) {
+		Hoax updated = hoaxService.update(id, hoaxUpdate);
+		return new HoaxVM(updated);
 	}
 }

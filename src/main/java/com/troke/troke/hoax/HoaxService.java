@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.troke.troke.file.FileAttachment;
 import com.troke.troke.file.FileAttachmentRepository;
 import com.troke.troke.file.FileService;
+import com.troke.troke.hoax.vm.HoaxUpdateVM;
 import com.troke.troke.user.User;
 import com.troke.troke.user.UserService;
 
@@ -90,5 +91,16 @@ public class HoaxService {
 			fileService.deleteAttachmentImage(hoax.getAttachment().getName());
 		}
 		hoaxRepository.deleteById(id);
+	}
+
+	public Hoax update(long id, HoaxUpdateVM hoaxUpdate) {
+		Hoax inDB = hoaxRepository.getById(id);
+		inDB.setContent(hoaxUpdate.getContent());
+		if (hoaxUpdate.getAttachment() != null) {
+			FileAttachment fileInDB = fileAttachmentRepository.findById(hoaxUpdate.getAttachment().getId()).get();
+			fileInDB.setHoax(inDB);
+			inDB.setAttachment(fileInDB);
+		}
+		return hoaxRepository.save(inDB);
 	}
 }
