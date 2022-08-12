@@ -1,18 +1,11 @@
 troke:
   upload-path: uploads-prod
 spring:
-  profiles:
-    active:
-    - prod
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
   datasource:
     username: zzydqcgbwlbqkx
     password: cf79849361eca3249e9ebc1e799ac77f6fed1cee4be42076b4f151d6cfdafd43
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgres://zzydqcgbwlbqkx:cf79849361eca3249e9ebc1e799ac77f6fed1cee4be42076b4f151d6cfdafd43@ec2-44-193-178-122.compute-1.amazonaws.com:5432/d8f2km4phgjchb
+    url: jdbc:postgresql://ec2-44-193-178-122.compute-1.amazonaws.com:5432/d8f2km4phgjchb
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
@@ -42,36 +35,3 @@ spring:
           auth: true
           starttls:
             enable: true
----
-spring:
-  h2:
-    console:
-      enabled: true
-  config:
-    activate:
-      on-profile: prod
-  datasource:
-    driverClassName: org.h2.Driver
-    url: jdbc:h2:./troke-prod
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    hibernate:
-      ddl-auto: update
-troke:
-  upload-path: uploads-prod
----
-spring:
-  config:
-    activate:
-      on-profile: dev
-  datasource:
-    url: jdbc:h2:mem:troke-dev
-troke:
-  upload-path: uploads-dev
----
-spring:
-  config:
-    activate:
-      on-profile: test
-troke:
-  upload-path: uploads-test
