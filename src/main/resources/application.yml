@@ -9,10 +9,12 @@ spring:
       enabled: true
       path: /h2-console
   datasource:
-    driverClassName: org.h2.Driver
-    url: jdbc:h2:./troke-prod
+    username: zzydqcgbwlbqkx
+    password: cf79849361eca3249e9ebc1e799ac77f6fed1cee4be42076b4f151d6cfdafd43
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgres://zzydqcgbwlbqkx:cf79849361eca3249e9ebc1e799ac77f6fed1cee4be42076b4f151d6cfdafd43@ec2-44-193-178-122.compute-1.amazonaws.com:5432/d8f2km4phgjchb
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
     properties:
